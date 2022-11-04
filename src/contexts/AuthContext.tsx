@@ -8,7 +8,7 @@ WebBrowser.maybeCompleteAuthSession();
 
 export interface UserProps {
   name: string;
-  avatarUrl: string;
+  avatarURL: string;
 }
 
 export interface AuthContextDataProps {
@@ -55,9 +55,9 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
       const userInfoResponse = await api.get('/me');
       setUser(userInfoResponse.data.user);
 
-    } catch (err) {
-      console.log(err);
-      throw err;
+    } catch (error) {
+      console.log(error.response.data);
+      throw error;
     } finally {
       setIsUserLoading(false)
     }
